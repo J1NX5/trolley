@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,15 @@ export class HomePage {
   article: string = "";
   shopping_cart: number = 0;
 
-  constructor(private toastController: ToastController) {}
+  constructor(private toastController: ToastController, private route: ActivatedRoute) {}
   addNum(num_string: string){
     this.article += num_string
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      console.log(params['barcode'])
+    });
   }
 
   addNumToList(){
