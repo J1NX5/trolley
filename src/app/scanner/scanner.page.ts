@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-scanner',
@@ -7,35 +7,25 @@ import { BarcodeScanner, SupportedFormat } from '@capacitor-community/barcode-sc
   styleUrls: ['./scanner.page.scss'],
 })
 export class ScannerPage implements OnInit {
+  data: any;
 
-  constructor() {
-    this.startScan().then(()=>{
-      console.log("gescannt")
-    })
+  constructor(private barcodeScanner: BarcodeScanner) {
+    this.scan()
   }
-  /*checkPermission = async () => {
-      const status = await BarcodeScanner.checkPermission();
-      if (status.denied) {
-        const c = confirm('If you want to grant permission for using your camera, enable it in the app settings.');
-        if (c) {
-          BarcodeScanner.openAppSettings();
-        }
-      }
-  }*/
-  startScan = async () => {
-    BarcodeScanner.hideBackground();
-    const result = await BarcodeScanner.startScan({ targetedFormats: [SupportedFormat.EAN_13] });
-    if (result.hasContent) {
-      console.log(result.content);
-    }
-  }
-
-  stopScan = () => {
-    BarcodeScanner.showBackground();
-    BarcodeScanner.stopScan();
-  };
 
   ngOnInit() {
   }
+
+  scan() {
+    this.data = null;
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.data = barcodeData;
+    }).catch(err => {
+      console.log('Error', err);
+    });
+  }
+
+
 
 }
