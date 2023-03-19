@@ -20,7 +20,7 @@ export class HomePage {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params['barcode'])
+      console.log("Der Barcode ist:", params['barcode'])
     });
   }
 

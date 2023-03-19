@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HostListener, Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Router } from '@angular/router';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-scanner',
@@ -8,8 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./scanner.page.scss']
 })
 export class ScannerPage implements OnInit {
-
+  
   ngOnInit() {
+    App.addListener('resume', () => {
+      this.onResume()
+    })
   }
 
   data: any;
@@ -20,14 +24,13 @@ export class ScannerPage implements OnInit {
   }
 
   onResume(){
-    this.router.navigate(['/home'], { queryParams: { barcode: this.data } })
+    this.router.navigate(['/home'], { queryParams: { barcode: this.data.text } })
   }
 
   scan(){
     this.data = null;
     this.barcodeScanner.scan().then(barcodeData => {
-      console.log('Barcode data', barcodeData);
-      this.data = JSON.stringify(barcodeData);
+      this.data = barcodeData;
     }).catch(err => {
       console.log('Error', err);
     });
