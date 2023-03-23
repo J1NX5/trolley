@@ -10,13 +10,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class HomePage {
 
   items: number[] = [];
-  article: string = "";
   shopping_cart: number = 0;
 
   constructor(private toastController: ToastController, private route: ActivatedRoute) {}
-  addNum(num_string: string){
-    this.article += num_string
-  }
+
+  
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -24,24 +22,6 @@ export class HomePage {
     });
   }
 
-  addNumToList(){
-    const newItemValue = parseFloat(this.article);
-    if (!isNaN(newItemValue)) {
-      this.items.push(parseFloat(this.article))  
-      this.delNum()
-      this.calCart()
-    } else {
-      this.toastController.create({
-        message: 'Bang. Mach das nicht noch einmal!',
-        duration: 2000,
-      }).then(toast => toast.present());
-    }
-
-  }
-
-  delNum(){
-    this.article = ""
-  }
 
   delItem(del_num_index: number){
     this.items.splice(del_num_index, 1)
@@ -55,5 +35,4 @@ export class HomePage {
     }
     this.shopping_cart = tmp_sc
   }
-
 }

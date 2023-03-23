@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'scanner',
     loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule)
   },
+  {
+    path: 'add',
+    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+  },
 ];
 
 @NgModule({
