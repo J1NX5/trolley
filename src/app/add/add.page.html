@@ -1,12 +1,17 @@
 <ion-content>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink]="['/home']">
+      <ion-icon name="return-up-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-list>
     <ion-item>
       <ion-label>Artikel:</ion-label>
-      <ion-input inputmode="text" [clearInput]="true"></ion-input>
+      <ion-input inputmode="text" [clearInput]="true" [(ngModel)]="article"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Preis:</ion-label>
-      <ion-input inputmode="email" [clearInput]="true"></ion-input>
+      <ion-input [clearInput]="true">{{ price | currency:'EUR':'symbol' }}</ion-input>
     </ion-item>
   </ion-list>
   <ion-grid>
@@ -29,4 +34,5 @@
       <ion-col><ion-button color="medium" (click)="addNum('.')">.</ion-button></ion-col>
     </ion-row>
   </ion-grid>
+  <ion-button expand="block" (click)="sendItemToList()">Artikel hinzufügen</ion-button>
 </ion-content>

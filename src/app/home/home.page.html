@@ -8,10 +8,11 @@
     <div class="shopping_list ion-padding-top">
       <ion-item *ngFor="let item of items; let itemIndex=index">
         <!--cannot pase item in delItem function-->
-        {{ item | currency:'EUR':'symbol':'.2-2' }} <ion-button color="secondary" (click)="delItem(itemIndex)" slot="end"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+        <h1>{{item.name}}</h1>
+        <p>{{ item.price | currency:'EUR':'symbol':'.2-2' }}</p><ion-button color="secondary" (click)="delItem(itemIndex)" slot="end"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
       </ion-item>
     </div>
-      <ion-fab slot="fixed" vertical="top" horizontal="end">
+      <ion-fab slot="fixed" vertical="bottom" horizontal="end" [edge]="true">
         <ion-fab-button>
           <ion-icon name="chevron-back-circle"></ion-icon>
         </ion-fab-button>
