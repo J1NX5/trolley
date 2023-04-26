@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, } from '@angular/router';
+import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 @Component({
   selector: 'app-add',
@@ -11,9 +12,12 @@ export class AddPage implements OnInit {
   article: string = "";
   price: string = "";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute, private bs: BarcodeSearcherService) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.bs.callAPI(params['barcode'])
+    });
   }
 
   addNum(num_string: string){

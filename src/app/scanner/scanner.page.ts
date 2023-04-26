@@ -27,7 +27,7 @@ export class ScannerPage implements OnInit {
   onResume(): void {
     fromEvent(document, 'resume')
       .subscribe(() => {
-        this.router.navigate(['/home'], { queryParams: { barcode: this.data.text } })
+        this.router.navigate(['/add'], { queryParams: { barcode: this.data.text } })
       })
   }
 
