@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,7 @@ export class BarcodeSearcherService {
   constructor(private http: HttpClient) { }
 
   callAPI(barcode: string){
-    this.http.get('https://europe-west3-fx-trolley.cloudfunctions.net/api/?barcode=' + this.removeNullinString(barcode))
-      .subscribe(data => {
-        return console.log(data)
-      })
+    return this.http.get('https://europe-west3-fx-trolley.cloudfunctions.net/api/?barcode=' + this.removeNullinString(barcode))
   }
 
   removeNullinString(raw_barcode: string){

@@ -12,19 +12,21 @@ export class AddPage implements OnInit {
   article: string = "";
   price: string = "";
 
-  constructor(private route: ActivatedRoute, private bs: BarcodeSearcherService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private bs: BarcodeSearcherService, private router: Router) { 
+    console.log(this.article)
+  }
 
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
-      this.bs.callAPI(params['barcode'])
+      this.bs.callAPI(params['barcode']).subscribe(data => {
+        const obj = JSON.parse(JSON.stringify(data))
+        this.article = obj.name
+      })
     });
   }
 
   addNum(num_string: string){
     this.price += num_string
-  }
-
-  callBarcodeService(barcode: string){
   }
 
   addNumToList(){
