@@ -9,11 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { HttpClientModule } from '@angular/common/http';
+import { BarcodeSearcherService } from './services/barcode-searcher.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [BarcodeScanner, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [BarcodeScanner, BarcodeSearcherService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

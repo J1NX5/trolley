@@ -9,14 +9,21 @@ export class BarcodeSearcherService {
   constructor(private http: HttpClient) { }
 
   callAPI(barcode: string){
-    this.http.get('https://www.buycott.com/upc/' + this.removeNullinString(barcode))
+    this.http.get('https://europe-west3-fx-trolley.cloudfunctions.net/api/?barcode=' + this.removeNullinString(barcode))
       .subscribe(data => {
-        console.log('Data: ',data)
+        return console.log(data)
       })
   }
 
   removeNullinString(raw_barcode: string){
     return raw_barcode.replace(/^0*/, '')
+  }
+
+  callGoogle(){
+    this.http.get('https://google.de')
+      .subscribe(data => {
+         console.log(data)
+      })
   }
 
 }

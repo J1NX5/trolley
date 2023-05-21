@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { addIcons } from 'ionicons';
+import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,9 @@ export class HomePage {
   items: Article[] = [];
   shopping_cart: number = 0;
 
-  constructor(private toastController: ToastController, private route: ActivatedRoute) {}
+  constructor(private toastController: ToastController, private route: ActivatedRoute, private bs: BarcodeSearcherService) {
+    this.bs.callGoogle()
+  }
 
   
 
