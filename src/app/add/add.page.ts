@@ -29,14 +29,9 @@ export class AddPage implements OnInit {
     this.price += num_string
   }
 
-  addNumToList(){
+  addToList(){
     const newItemValue = parseFloat(this.price);
-    if (!isNaN(newItemValue)) {
-
-    } else {
-
-    }
-
+    this.router.navigate(['/home'], { queryParams: { article: this.article, price: this.price } })
   }
   
   delNum(){

@@ -16,7 +16,6 @@ export class HomePage {
   shopping_cart: number = 0;
 
   constructor(private toastController: ToastController, private route: ActivatedRoute, private bs: BarcodeSearcherService) {
-    this.bs.callGoogle()
   }
 
   
