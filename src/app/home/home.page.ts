@@ -28,21 +28,22 @@ export class HomePage {
 
   addItem(name: string, price: string){
     this.items.push(new Article(name,price))
+    this.calCart()
   }
 
 
   delItem(del_num_index: number){
     this.items.splice(del_num_index, 1)
-    //this.calCart()
+    this.calCart()
   }
 
-  /*calCart(){
+  calCart(){
     let tmp_sc: number = 0
     for(var i = 0; i < this.items.length; i++){
-      tmp_sc += this.items[i]
+      tmp_sc += Number(this.items[i].price)
     }
     this.shopping_cart = tmp_sc
-  }*/
+  }
 }
 
 class Article {

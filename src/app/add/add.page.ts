@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, } from '@angular/router';
 import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 @Component({
   selector: 'app-add',
+  changeDetection:ChangeDetectionStrategy.OnPush,
   templateUrl: './add.page.html',
   styleUrls: ['./add.page.scss']
 })
 export class AddPage implements OnInit {
-
-  article: string = "";
+  
+  @Input() article: string = ""
   price: string = "";
 
-  constructor(private route: ActivatedRoute, private bs: BarcodeSearcherService, private router: Router) { 
+  constructor(private route: ActivatedRoute, private bs: BarcodeSearcherService, private router: Router, private ref: ChangeDetectorRef) { 
     console.log(this.article)
   }
 
@@ -21,6 +22,7 @@ export class AddPage implements OnInit {
       this.bs.callAPI(params['barcode']).subscribe(data => {
         const obj = JSON.parse(JSON.stringify(data))
         this.article = obj.name
+        this.ref.detectChanges()
       })
     });
   }

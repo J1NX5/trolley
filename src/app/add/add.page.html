@@ -11,7 +11,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Preis:</ion-label>
-      <ion-input [clearInput]="true">{{ price | currency:'EUR':'symbol' }}</ion-input>
+      <ion-input [clearInput]="false">{{ price | currency:'EUR':'symbol' }}</ion-input>
     </ion-item>
   </ion-list>
   <ion-grid>
