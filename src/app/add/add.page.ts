@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, } from '@angular/router';
 import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 @Component({
   selector: 'app-add',
-  changeDetection:ChangeDetectionStrategy.OnPush,
   templateUrl: './add.page.html',
   styleUrls: ['./add.page.scss']
 })
+
 export class AddPage implements OnInit {
   
   @Input() article: string = ""

@@ -11,28 +11,8 @@
     </ion-item>
     <ion-item>
       <ion-label>Preis:</ion-label>
-      <ion-input [clearInput]="false">{{ price | currency:'EUR':'symbol' }}</ion-input>
+      <ion-input inputmode="decimal" [(ngModel)]="price">{{ price | currency:'EUR':'symbol' }}</ion-input>
     </ion-item>
   </ion-list>
-  <ion-grid>
-    <ion-row>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('1')">1</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('2')">2</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('3')">3</ion-button></ion-col>
-      <ion-col><ion-button color="danger" (click)="delNum()">del</ion-button></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('4')">4</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('5')">5</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('6')">6</ion-button></ion-col>
-      <ion-col><ion-button color="success" (click)="addToList()">add</ion-button></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('7')">7</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('8')">8</ion-button></ion-col>
-      <ion-col><ion-button size="large" color="dark" (click)="addNum('9')">9</ion-button></ion-col>
-      <ion-col><ion-button color="medium" (click)="addNum('.')">.</ion-button></ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-button expand="block" (click)="sendItemToList()">Artikel hinzufügen</ion-button>
+  <ion-button expand="block" (click)="addToList()">Artikel hinzufügen</ion-button>
 </ion-content>
