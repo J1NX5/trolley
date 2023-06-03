@@ -7,11 +7,11 @@
   <ion-list>
     <ion-item>
       <ion-label>Artikel:</ion-label>
-      <ion-input inputmode="text" [clearInput]="true" [(ngModel)]="article">{{article}}</ion-input>
+      <ion-input inputmode="text" [clearInput]="true" [(ngModel)]="article"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Preis:</ion-label>
-      <ion-input inputmode="decimal" [(ngModel)]="price">{{ price | currency:'EUR':'symbol' }}</ion-input>
+      <ion-input inputmode="decimal" [(ngModel)]="price"></ion-input>
     </ion-item>
   </ion-list>
   <ion-button expand="block" (click)="addToList()">Artikel hinzufügen</ion-button>
