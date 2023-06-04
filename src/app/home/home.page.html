@@ -2,13 +2,14 @@
   <div id="container">
     <div class="shopping_list ion-padding-top">
       <ion-item *ngFor="let item of items; let itemIndex=index">
-        <h1>{{item.name}}</h1>
-        <p>{{ item.price | currency:'EUR':'symbol':'.2-2' }}</p><ion-button color="secondary" (click)="delItem(itemIndex)" slot="end"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+        <div class="text-space-to-the-right">{{ item.price | number:'1.2-2' }} € &#10162;</div>
+        <div class="text-dark-grey">{{item.name}}</div>
+        <ion-button color="secondary" (click)="delItem(itemIndex)" slot="end"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
       </ion-item>
     </div>
     <ion-card>
       <ion-card-header color="dark">
-        <ion-card-title>Summe: {{ shopping_cart | currency:'EUR':'symbol':'.2-2' }}</ion-card-title>
+        <ion-card-title>Summe: {{ shopping_cart | number:'1.2-2' }} €</ion-card-title>
       </ion-card-header>
     </ion-card>
   </div>
