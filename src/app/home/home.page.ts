@@ -26,9 +26,21 @@ export class HomePage {
     });
   }
 
-  addItem(name: string, price: string){
+  addItem(name: string, price: number){
     this.items.push(new Article(name,price))
     this.calCart()
+  }
+
+  incrementFactor(index: number){
+    this.items[index].multi += 1
+    this.calCart()
+  }
+
+  decrementFactor(index: number){
+    if(this.items[index].multi != 1){
+      this.items[index].multi -= 1
+      this.calCart()
+    }
   }
 
 
@@ -40,7 +52,7 @@ export class HomePage {
   calCart(){
     let tmp_sc: number = 0
     for(var i = 0; i < this.items.length; i++){
-      tmp_sc += Number(this.items[i].price)
+      tmp_sc += (this.items[i].price * this.items[i].multi)
     }
     this.shopping_cart = tmp_sc
   }
@@ -48,11 +60,13 @@ export class HomePage {
 
 class Article {
   name: string;
-  price: string;
+  price: number;
+  multi: number;
 
-  constructor(g_name: string, g_price: string) {
+  constructor(g_name: string, g_price: number) {
     this.name = g_name;
     this.price = g_price;
+    this.multi = 1
   }
 
 }

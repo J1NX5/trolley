@@ -2,8 +2,10 @@
   <div id="container">
     <div class="shopping_list ion-padding-top">
       <ion-item *ngFor="let item of items; let itemIndex=index">
-        <div class="text-space-to-the-right">{{ item.price | number:'1.2-2' }} € &#10162;</div>
-        <div class="text-dark-grey">{{item.name}}</div>
+        <div class="text-space-to-the-right">{{ item.price * item.multi | number:'1.2-2' }} €</div>
+        <div class="text-dark-grey">(x{{item.multi}}){{item.name}}</div>
+        <ion-button color="secondary" (click)="incrementFactor(itemIndex)" slot="end"><ion-icon slot="icon-only" name="add-outline"></ion-icon></ion-button>
+        <ion-button color="secondary" (click)="decrementFactor(itemIndex)" slot="end"><ion-icon slot="icon-only" name="remove-outline"></ion-icon></ion-button>
         <ion-button color="secondary" (click)="delItem(itemIndex)" slot="end"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
       </ion-item>
     </div>
