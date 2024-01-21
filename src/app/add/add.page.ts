@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 @Component({
@@ -10,8 +10,9 @@ import { BarcodeSearcherService } from '../services/barcode-searcher.service';
 
 export class AddPage implements OnInit {
   
-  @Input() article: string = ""
+  article: string = ""; // @Input() wurde entfernt, da es nicht benötigt wird
   price: string = "";
+  suggestions: string[] = []; // Die Variable wurde hier deklariert
 
   constructor(private route: ActivatedRoute, private bs: BarcodeSearcherService, private router: Router, private ref: ChangeDetectorRef) { 
     console.log(this.article)
@@ -46,4 +47,13 @@ export class AddPage implements OnInit {
     }
   }
 
+  onSearch() {
+    // Hier können wir die Vorschläge generieren und in der `suggestions`-Variable speichern
+    this.suggestions = ['Vorschlag 1', 'Vorschlag 2', 'Vorschlag 3'];
+  }
+
+  selectSuggestion(suggestion: string) {
+    // Diese Funktion wurde hinzugefügt, um den ausgewählten Vorschlag in das `article`-Feld zu setzen
+    this.article = suggestion;
+  }
 }
