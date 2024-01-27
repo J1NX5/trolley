@@ -1,9 +1,5 @@
-Willkommen bei Trolley dem Einkaufs-Assistenten mit BarcodeScanner!
-Diese App wurde von mir entwickelt, um das Einkaufen einfacher und effizienter zu gestalten.
-Mit dem integrierten BarcodeScanner kannst du mühelos Produktinformationen abrufen, indem du einfach den Barcode scannst.
+Trolley is, so to speak, a calculator especially for shopping. 
+You have a list in which you can see what you are currently purchasing. You can enter the items by hand or using a barcode scanner. Unfortunately, there is no central contact point where you can ask for the price.
+You only get the item name.
 
-Funktionen:
-
-BarcodeScanner: Scanne den Barcode eines Produkts, um sofort den Namen und zusätzliche Informationen darüber zu erhalten.
-Taschenrechner: Füge Produkte zu deinem Einkaufswagen hinzu und berechne den Gesamtpreis, um ein besseres Budgetmanagement zu ermöglichen.
-Einfache Bedienung: Die benutzerfreundliche Oberfläche macht das Einkaufen zum Kinderspiel.
+The app is written with NodeJS, Ionic and Angular and there is still a lot of work to be done.
